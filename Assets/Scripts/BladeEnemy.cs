@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class BladeEnemy : MonoBehaviour
 {
-    //these have to be class level otherwise gameplay breaks there is nasty bug where both blades collide with each other become one and werid things happen
+    //startX and direction have to be class level otherwise gameplay breaks there is nasty bug where both blades collide with each other become one and werid things happen
     private float startX;
-    private float direction;
+    private float direction; 
+
+
+    [SerializeField] private float waveFrequency = 1.3f;
+    [SerializeField] private float waveAplitute = 3.5f;
+    [SerializeField] private float speed = 3.5f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,10 +32,6 @@ public class BladeEnemy : MonoBehaviour
 
     private void UpdateEnemyMovement()
     {
-        float waveFrequency = 1.3f;
-        float waveAplitute = 3.5f;
-        float speed = 3.5f;
-
         float xMovement = direction * speed * Time.deltaTime;
 
         //Time.time returns TOTAL TIME after game started and Time.deltaTime returns time PER FRAME

@@ -638,7 +638,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 427388715}
-  smoothSpeed: 5
 --- !u!1 &586658353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,7 +1955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticPlatformPrfab: {fileID: 1061564314}
   movingPlatformPrfab: {fileID: 3354700212312112796, guid: e9a81abe15b92d64199710702fa3cf90, type: 3}
-  brekablePlatformprefab: {fileID: 8632598352183162347}
+  brekablePlatformPrefab: {fileID: 8632598352183162347}
 --- !u!1 &2047456093
 GameObject:
   m_ObjectHideFlags: 0

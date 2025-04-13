@@ -5,6 +5,10 @@ public class FallingEnemySpawner : MonoBehaviour
 {
     private Camera cam; //cacheing the camera 
     private float spawnTimer;
+    [SerializeField] private float yOffset = 2f;
+    [SerializeField] private float enemySpawnXOffset = -2.5f;
+    [SerializeField] private float spawnDelay = 4f;
+
 
     public GameObject fallingEnemyPrefab;
     public Transform player;
@@ -24,17 +28,14 @@ public class FallingEnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        float delay = 4f;//4 seconds
         spawnTimer += Time.deltaTime;
 
-        if (spawnTimer >= delay)
+        if (spawnTimer >= spawnDelay)
         {
-            var initialPos = ScreenBounds.TopLeft;
-            float yOffset = 2f;
-            float enemySpawnXOffset = -2.5f;
+            var topLeft = new Vector2(0f, 1f);
 
-            var spawnPos = new Vector2(initialPos.x, initialPos.y + yOffset);
-            spawnPos = cam.ViewportToWorldPoint(spawnPos);
+            var spawnPos = new Vector2(topLeft.x, topLeft.y + yOffset);
+            spawnPos = cam.ViewportToWorldPoint(spawnPos); 
 
             var offsettedPlayerPosX = player.position.x + Random.Range(-enemySpawnXOffset, enemySpawnXOffset);
 

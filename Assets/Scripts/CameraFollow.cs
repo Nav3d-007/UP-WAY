@@ -6,8 +6,7 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
-        FollowPlayerY();
-           
+        FollowPlayerY(); 
     }
 
     private void FollowPlayerY()
@@ -22,7 +21,7 @@ public class CameraFollow : MonoBehaviour
             //whenver doing lerp alwasy multiply by Time.Delta cuz should be consistent across varying hardware blah blah
             Vector2 newPos = Vector2.Lerp(currentPos, targetPos, smoothSpeed * Time.deltaTime);
 
-            transform.position = new Vector3(newPos.x, newPos.y, transform.position.z); //cant avoid user a vector2 cuz its a camera its needs the z axis
+            transform.position = new Vector3(newPos.x, newPos.y, transform.position.z); //cant avoid use of Vector3 here cuz its a camera its needs a z axis
 
         }
     }

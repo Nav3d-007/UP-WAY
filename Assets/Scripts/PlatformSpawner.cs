@@ -5,16 +5,21 @@ public class PlatformSpawner : MonoBehaviour
 {    
     public GameObject staticPlatformPrfab;
     public GameObject movingPlatformPrfab;
-    public GameObject brekablePlatformprefab;
+    public GameObject brekablePlatformPrefab;
 
 
     private float lastSpawnY;
     private Camera cam; //cacheing the camera 
+    private float LEFT_BOUND; //both for cacheing purpose inseat of accessing the static ScreenBound in the Update() every frame
+    private float RIGHT_BOUND;
+
 
     void Start()
     {
         cam = Camera.main;
         lastSpawnY = 0f;
+        LEFT_BOUND = ScreenBounds.Left;
+        RIGHT_BOUND = ScreenBounds.Right;
     }
 
     // Update is called once per frame
@@ -27,17 +32,18 @@ public class PlatformSpawner : MonoBehaviour
     private void SpawnPlatforms()
     {
         Vector2 midTop = cam.ViewportToWorldPoint(new Vector2(0.5f, 1f));//have to do here cuz camera is moving Y cord is changing
-        float spawnGap = 4f; // how far away the platformarms from each other
+        float spawnGap = 4f; // how far away the plaformarms from each other
 
-        //diffuculty controlling algo can be tuned more for special platforms to be more dynamic
+        //diffuculty controlling algo can be tuned more for special platforms to be more dynamic and incorporating increasing as incrasing difficulty
         if (midTop.y > lastSpawnY + spawnGap)
         {
             float randomnessXAndYOffset = 3.5f;
             float yOffset = 2f;
             float specialPlatformSpawnChance = 0.5f; //50% probability for a special platform to spawn 
 
-            var radomX = Random.Range(ScreenBounds.Left + randomnessXAndYOffset, ScreenBounds.Right - randomnessXAndYOffset);
-            var spawnPos = new Vector2(radomX, midTop.y + yOffset);
+            var randomX = Random.Range(LEFT_BOUND + randomnessXAndYOffset, RIGHT_BOUND - randomnessXAndYOffset);
+
+            var spawnPos = new Vector2(randomX, midTop.y + yOffset);
 
             if (Random.value < specialPlatformSpawnChance)
             {
@@ -48,10 +54,9 @@ public class PlatformSpawner : MonoBehaviour
                 if (Random.value < 0.5f) //for now lets just choose between the two
                     Instantiate(movingPlatformPrfab, specialSpawnPos, Quaternion.identity);
                 else
-                    Instantiate(brekablePlatformprefab, specialSpawnPos, Quaternion.identity);
+                    Instantiate(brekablePlatformPrefab, specialSpawnPos, Quaternion.identity);
 
             }
-
             Instantiate(staticPlatformPrfab, spawnPos, Quaternion.identity);
             lastSpawnY = spawnPos.y;
         }
