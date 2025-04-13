@@ -52,7 +52,6 @@ public class PlatformSpawner : MonoBehaviour
                     Instantiate(movingPlatformPrfab, specialSpawnPos, Quaternion.identity);
                 else
                     Instantiate(brekablePlatformPrefab, specialSpawnPos, Quaternion.identity);
-
             }
             Instantiate(staticPlatformPrfab, spawnPos, Quaternion.identity);
             lastSpawnY = spawnPos.y;

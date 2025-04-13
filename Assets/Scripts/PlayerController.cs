@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sr;
     private static int lives;
     private float moveInput;
+    private bool isPlayerCollidingWithEnemy;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         moveInput = Input.GetAxis("Horizontal"); //1 or -1
-
+        
         TogglePlayerHorizontalDir();
         UpdatePlayerSprites();
     }
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = idleSprite;
         lives = 3;
+        isPlayerCollidingWithEnemy = false;
     }
 
     private void UpdateLivesText()
@@ -90,14 +92,19 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator BlinkEffect()
     {
-        for(int i =0; i < 5; i++)
-        {
-            sr.enabled = false;
-            yield return new WaitForSeconds(0.1f);
+        if(isPlayerCollidingWithEnemy)
+            gameObject.GetComponent<CircleCollider2D>().enabled = false; //I-FRAMES LOGUIC!
 
-            sr.enabled = true;
-            yield return new WaitForSeconds(0.1f);
-        }
+            for (int i = 0; i < 5; i++)
+            {
+                sr.enabled = false;
+                yield return new WaitForSeconds(0.1f);
+
+                sr.enabled = true;
+                yield return new WaitForSeconds(0.1f);
+            }
+
+         gameObject.GetComponent<CircleCollider2D>().enabled = true; ;
     }
 
    private void ClampPlayerX()
@@ -128,9 +135,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        isPlayerCollidingWithEnemy = false;
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             PlayerIsHurt();
+            isPlayerCollidingWithEnemy = true;
         }
     }
 
