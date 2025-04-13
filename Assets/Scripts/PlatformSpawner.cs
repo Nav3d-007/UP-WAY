@@ -10,8 +10,6 @@ public class PlatformSpawner : MonoBehaviour
 
     private float lastSpawnY;
     private Camera cam; //cacheing the camera 
-    private float LEFT_BOUND; //both for cacheing purpose inseat of accessing the static ScreenBound in the Update() every frame
-    private float RIGHT_BOUND;
 
     [SerializeField] private float spawnGap = 4f;// how far away the plaformarms from each other
     [SerializeField] private float yOffset = 2f; //how much above the platform should spawn at above the window top
@@ -24,8 +22,6 @@ public class PlatformSpawner : MonoBehaviour
     {
         cam = Camera.main;
         lastSpawnY = 0f;
-        LEFT_BOUND = ScreenBounds.Left;
-        RIGHT_BOUND = ScreenBounds.Right;
     }
 
     // Update is called once per frame
@@ -42,7 +38,7 @@ public class PlatformSpawner : MonoBehaviour
         //diffuculty controlling algo can be tuned more for special platforms to be more dynamic and incorporating increasing as incrasing difficulty
         if (midTop.y > lastSpawnY + spawnGap)
         {
-            var randomX = Random.Range(LEFT_BOUND + randomnessXAndYOffset, RIGHT_BOUND - randomnessXAndYOffset);
+            var randomX = Random.Range(ScreenBounds.Left + randomnessXAndYOffset, ScreenBounds.Right - randomnessXAndYOffset);
 
             var spawnPos = new Vector2(randomX, midTop.y + yOffset);
 

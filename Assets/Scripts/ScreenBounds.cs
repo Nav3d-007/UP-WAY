@@ -14,8 +14,9 @@ namespace Assets.Scripts
 
 
         //IMPORTANT - DO NOT use non primitive return types with this class in Update()
-        //ViewportToWorldPoint returns Vector3, and calling it statically every frame 
+        //ViewportToWorldPoint returns Vector3, and calling it STATICALLY every frame  (with all the implicit castings)
         //leads to weird/unpredictable behavior
+
     }
 
 }
