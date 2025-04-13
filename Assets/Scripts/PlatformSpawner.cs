@@ -13,6 +13,12 @@ public class PlatformSpawner : MonoBehaviour
     private float LEFT_BOUND; //both for cacheing purpose inseat of accessing the static ScreenBound in the Update() every frame
     private float RIGHT_BOUND;
 
+    [SerializeField] private float spawnGap = 4f;// how far away the plaformarms from each other
+    [SerializeField] private float yOffset = 2f; //how much above the platform should spawn at above the window top
+    [SerializeField] private float randomnessXAndYOffset = 3.5f;
+    [SerializeField] private float specialPlatformSpawnChance = 0.5f;//50% probability for a special platform to spawn 
+
+
 
     void Start()
     {
@@ -32,15 +38,10 @@ public class PlatformSpawner : MonoBehaviour
     private void SpawnPlatforms()
     {
         Vector2 midTop = cam.ViewportToWorldPoint(new Vector2(0.5f, 1f));//have to do here cuz camera is moving Y cord is changing
-        float spawnGap = 4f; // how far away the plaformarms from each other
 
         //diffuculty controlling algo can be tuned more for special platforms to be more dynamic and incorporating increasing as incrasing difficulty
         if (midTop.y > lastSpawnY + spawnGap)
         {
-            float randomnessXAndYOffset = 3.5f;
-            float yOffset = 2f;
-            float specialPlatformSpawnChance = 0.5f; //50% probability for a special platform to spawn 
-
             var randomX = Random.Range(LEFT_BOUND + randomnessXAndYOffset, RIGHT_BOUND - randomnessXAndYOffset);
 
             var spawnPos = new Vector2(randomX, midTop.y + yOffset);
