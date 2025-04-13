@@ -33,7 +33,7 @@ public class FallingEnemySpawner : MonoBehaviour
 
         if (spawnTimer >= spawnDelay)
         {
-            var topLeft = new Vector2(0f, 1f); //camera is moving , cant use ScreenBounds.cs every frame see reasong in the class
+            var topLeft = ViewportPoints.TopLeft; 
 
             var spawnPos = new Vector2(topLeft.x, topLeft.y + yOffset);
             spawnPos = cam.ViewportToWorldPoint(spawnPos); 

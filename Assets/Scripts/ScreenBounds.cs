@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public static class ScreenBounds
+    public static class ScreenBounds //returns world space co-ords
     {
         private static Camera _mainCamera => Camera.main; //cacheing the camera for performance 
 
