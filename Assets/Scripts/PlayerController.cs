@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        if(transform.position.y < ScreenBounds.Bottom && rb.linearVelocityY < 0) 
+        if(transform.position.y < ScreenBounds.Letf_BottomY && rb.linearVelocityY < 0) 
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             PlayerIsHurt();
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
    private void ClampPlayerX()
     {
         Vector2 pos = transform.position;
-        pos.x = Mathf.Clamp(pos.x, ScreenBounds.Left, ScreenBounds.Right);
+        pos.x = Mathf.Clamp(pos.x, ScreenBounds.Left_BottomX, ScreenBounds.Right_BottomX);
         transform.position = pos;
     }
 

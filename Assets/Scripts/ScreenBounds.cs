@@ -5,15 +5,14 @@ namespace Assets.Scripts
 {
     public static class ScreenBounds //returns world space co-ords
     {
-        private static Camera _mainCamera => Camera.main; //cacheing the camera for performance 
+        private static Camera _mainCamera => Camera.main; //cacheing it
 
-        public static float Left => _mainCamera.ViewportToWorldPoint(new Vector2(0f, 0f)).x;
-        public static float Right => _mainCamera.ViewportToWorldPoint(new Vector2(1f, 0f)).x;
-        public static float Top => _mainCamera.ViewportToWorldPoint(new Vector2(0f, 1f)).y;
-        public static float Bottom => _mainCamera.ViewportToWorldPoint(new Vector2(0f, 0f)).y;
+        public static float Left_BottomX => _mainCamera.ViewportToWorldPoint(new Vector2(0f, 0f)).x;
+        public static float Right_BottomX => _mainCamera.ViewportToWorldPoint(new Vector2(1f, 0f)).x;
+        public static float Letf_BottomY => _mainCamera.ViewportToWorldPoint(new Vector2(0f, 0f)).y;
 
 
-        //IMPORTANT - DO NOT use non primitive return types with this class in Update()
+        //IMPORTANT - DO NOT try to return non primitive types with this STATIC class in Update()
         //ViewportToWorldPoint returns Vector3, and calling it STATICALLY every frame  (with all the implicit castings)
         //leads to weird/unpredictable behavior
 

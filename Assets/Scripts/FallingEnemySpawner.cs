@@ -34,8 +34,8 @@ public class FallingEnemySpawner : MonoBehaviour
         if (spawnTimer >= spawnDelay)
         {
             var topLeft = ViewportPoints.TopLeft; 
-
             var spawnPos = new Vector2(topLeft.x, topLeft.y + yOffset);
+
             spawnPos = cam.ViewportToWorldPoint(spawnPos); 
 
             var offsettedPlayerPosX = player.position.x + Random.Range(-enemySpawnXOffset, enemySpawnXOffset);
