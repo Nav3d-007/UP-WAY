@@ -7,9 +7,9 @@ namespace Assets.Scripts
     {
         private static Camera _mainCamera => Camera.main; //cacheing it
 
-        public static float Left_BottomX => _mainCamera.ViewportToWorldPoint(new Vector2(0f, 0f)).x;
-        public static float Right_BottomX => _mainCamera.ViewportToWorldPoint(new Vector2(1f, 0f)).x;
-        public static float Letf_BottomY => _mainCamera.ViewportToWorldPoint(new Vector2(0f, 0f)).y;
+        public static float LeftX => _mainCamera.ViewportToWorldPoint(new Vector2(0f, 0f)).x;
+        public static float RightX => _mainCamera.ViewportToWorldPoint(new Vector2(1f, 0f)).x;
+        public static float LetfY => _mainCamera.ViewportToWorldPoint(new Vector2(0f, 0f)).y;
 
 
         //IMPORTANT - DO NOT try to return non primitive types with this STATIC class in Update()

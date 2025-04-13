@@ -38,7 +38,7 @@ public class PlatformSpawner : MonoBehaviour
         //diffuculty controlling algo can be tuned more for special platforms to be more dynamic and incorporating increasing as incrasing difficulty
         if (midTop.y > lastSpawnY + spawnGap)
         {
-            var randomX = Random.Range(ScreenBounds.Left_BottomX + randomnessXAndYOffset, ScreenBounds.Right_BottomX - randomnessXAndYOffset);
+            var randomX = Random.Range(ScreenBounds.LeftX + randomnessXAndYOffset, ScreenBounds.RightX - randomnessXAndYOffset);
 
             var spawnPos = new Vector2(randomX, midTop.y + yOffset);
 
