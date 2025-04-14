@@ -39,7 +39,7 @@ public class BladeEnemySpawner : MonoBehaviour
         spawnTimer += Time.deltaTime;
         if (spawnTimer >= spawnDelay)
         {
-            Instantiate(bladePrefab, spawnLeftPos, Quaternion.identity);
+            Instantiate(bladePrefab, spawnLeftPos, Quaternion.identity);//Object pooling could be a perfromance imrpovement 
             Instantiate(bladePrefab, spawnRightPos, Quaternion.identity);
             spawnTimer = 0f;
         }

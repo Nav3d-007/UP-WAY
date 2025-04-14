@@ -42,7 +42,7 @@ public class FallingEnemySpawner : MonoBehaviour
 
             var spawnAroundPlayer = new Vector2(offsettedPlayerPosX, spawnPos.y); //SNAPPY DIRECTLY ZAPPY 
 
-            Instantiate(fallingEnemyPrefab, spawnAroundPlayer, Quaternion.identity);
+            Instantiate(fallingEnemyPrefab, spawnAroundPlayer, Quaternion.identity);//object pooling could be performance imrpovaement
             spawnTimer = 0f;
         }
     }

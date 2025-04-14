@@ -35,7 +35,8 @@ public class PlatformSpawner : MonoBehaviour
     {
         Vector2 midTop = cam.ViewportToWorldPoint(ViewportPoints.MidTop);//have to do here cuz camera is moving Y cord is changing
 
-        //diffuculty controlling algo can be tuned more for special platforms to be more dynamic and incorporating increasing as incrasing difficulty
+        //diffuculty controlling algo can be tuned more for special platforms to be more dynamic and incorporating increasing score as incrasing difficulty
+        //also could implmenet object pooling for spawning
         if (midTop.y > lastSpawnY + spawnGap)
         {
             var randomX = Random.Range(ScreenBounds.LeftX + randomnessXAndYOffset, ScreenBounds.RightX - randomnessXAndYOffset);
