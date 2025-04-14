@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
@@ -6,8 +7,6 @@ public class MovingPlatform : MonoBehaviour
     private Vector2 endPos;
     private float direction;
     private float t = 0f;
-    private float disableOffset;
-
 
     public float speed = 2f;
     public float moveDistance = 3f;
@@ -19,7 +18,6 @@ public class MovingPlatform : MonoBehaviour
         startPos = transform.position;
         endPos = startPos + Vector2.right * moveDistance;
         direction = 1;
-        disableOffset = 6f;
     }
 
     // Update is called once per frame
@@ -31,7 +29,8 @@ public class MovingPlatform : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (transform.position.y + disableOffset < Camera.main.transform.position.y) { 
+        float disableOffset = 6f;
+        if (transform.position.y + disableOffset < ScreenBounds.LetfY) { 
          gameObject.SetActive(false);
         }
     }

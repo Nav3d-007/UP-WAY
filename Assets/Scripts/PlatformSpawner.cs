@@ -6,10 +6,11 @@ public class PlatformSpawner : MonoBehaviour
     public GameObject staticPlatformPrfab;
     public GameObject movingPlatformPrfab;
     public GameObject brekablePlatformPrefab;
+    private Camera cam; //cacheing the camera 
+
 
 
     private float lastSpawnY;
-    private Camera cam; //cacheing the camera 
 
     [SerializeField] private float spawnGap = 4f;// how far away the plaformarms from each other
     [SerializeField] private float yOffset = 2f; //how much above the platform should spawn at above the window top

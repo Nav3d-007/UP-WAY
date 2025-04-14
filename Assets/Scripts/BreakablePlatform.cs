@@ -1,18 +1,16 @@
+using Assets.Scripts;
 using UnityEngine;
 
 public class BreakablePlatform : MonoBehaviour
 {
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void LateUpdate()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        float disableOffset = 6f;
+        if (transform.position.y + disableOffset < ScreenBounds.LetfY)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

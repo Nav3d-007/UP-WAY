@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using UnityEngine;
 
 public class BladeEnemy : MonoBehaviour
@@ -43,6 +44,22 @@ public class BladeEnemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void LateUpdate()
+    {
+        var leftX= ScreenBounds.LeftX;
+        var rightX = ScreenBounds.RightX;
+        float disableOffset = 20f;
+
+        if (direction == 1 && transform.position.x - disableOffset > leftX)
+        {
+            gameObject.SetActive(false);
+        }
+        if (direction == -1 && transform.position.x + disableOffset < rightX)
         {
             gameObject.SetActive(false);
         }
