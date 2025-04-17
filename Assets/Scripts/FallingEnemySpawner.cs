@@ -7,8 +7,8 @@ public class FallingEnemySpawner : MonoBehaviour
     private float spawnTimer;
 
     [SerializeField] private float yOffset = 2f;
-    [SerializeField] private float enemySpawnXOffset = -2.5f;
-    [SerializeField] private float spawnDelay = 4f;
+    [SerializeField] private float enemySpawnXOffset =3.5f;
+    [SerializeField] private float spawnDelay = 10f;
 
 
     public GameObject fallingEnemyPrefab;

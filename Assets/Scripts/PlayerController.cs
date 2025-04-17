@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         
         TogglePlayerHorizontalDir();
         UpdatePlayerSprites();
+
     }
 
     private void FixedUpdate()
@@ -148,9 +149,23 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Platform"))
         {
-            rb.linearVelocityY = 0; //reset to avoid players acceleration to oblivion
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            foreach(ContactPoint2D point in collision.contacts)
+            {
+                if(point.normal.y > 0.5f) //player coming from above
+                {
+                    StartCoroutine(DelayJump());
+                }
+            }
+                
         }
     }
+    
+   private  IEnumerator DelayJump()
+    {
+        sr.sprite = jumpSprite;
+        yield return new WaitForSeconds(0.1f);
+        rb.linearVelocityY = 0; //reset to avoid players acceleration to oblivion
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
+    }
 }

@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594cc9264b50bfb4a8c1c3ffbc287869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 4.5
+  jumpForce: 6.5
   idleSprite: {fileID: 1245352483, guid: ac441cd4c2d39094ca944aa35a23b182, type: 3}
   fallSprite: {fileID: -5966621866309598838, guid: 70983301abd0e09459e15bf5ee75c9ea, type: 3}
   jumpSprite: {fileID: 7460046300004610927, guid: ff69a0bd1a6fc014d837654eabff2a2f, type: 3}

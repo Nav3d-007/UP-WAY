@@ -7,7 +7,7 @@ public class BladeEnemySpawner : MonoBehaviour
     private Camera cam; //cacheing the camera 
 
     [SerializeField] private float ySpawnOffset = 2.5f;
-    [SerializeField] private float spawnDelay = 5f;
+    [SerializeField] private float spawnDelay = 15f;
 
 
     public GameObject bladePrefab;
