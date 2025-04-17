@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
     {
         //float smoothSpeed = 5f;
         float smoothTime = 0.35f;
-        float yOffset = 1f;
+        float yOffset = 1.8f;
 
         if (player.position.y > transform.position.y)
         {

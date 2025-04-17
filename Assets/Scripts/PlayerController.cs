@@ -131,6 +131,7 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
+        FindFirstObjectByType<ScoreManager>().SaveHighScore();
         FindFirstObjectByType<GameOverManager>().GameOver();
     }
 
